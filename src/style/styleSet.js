@@ -1,4 +1,4 @@
 const styleSet = {
-    width: '390px',
+    width: '390',
 };
 export default styleSet;
