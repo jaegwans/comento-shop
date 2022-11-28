@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function ThemeButton({ title }) {
-    return <StyledBtn>{title}</StyledBtn>;
+function ThemeButton({ title, onClick, id }) {
+    return (
+        <StyledBtn onClick={onClick} id={id}>
+            {title}
+        </StyledBtn>
+    );
 }
 
 const StyledBtn = styled.div`
