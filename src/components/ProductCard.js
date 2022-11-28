@@ -4,7 +4,7 @@ import styled from 'styled-components';
 function ProductCard({ imgSrc, title, summary }) {
     return (
         <StyledProductCard>
-            <img src={imgSrc} width="341px" height="204px" />
+            <img src={imgSrc} alt="title" />
             <h3>{title}</h3>
             <p>{summary}</p>
         </StyledProductCard>
@@ -31,6 +31,11 @@ const StyledProductCard = styled.div`
         /* or 131% */
 
         letter-spacing: -0.01em;
+    }
+    img {
+        object-fit: cover;
+        width: 341px;
+        height: 204px;
     }
 `;
 
