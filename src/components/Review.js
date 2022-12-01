@@ -19,9 +19,9 @@ const Review = ({
                     style={{ borderRadius: 10, marginRight: '10px' }}
                 />
                 <div className="profileDetail">
-                    <div>{score}</div>
+                    <div style={{ color: 'yellow' }}>{score}</div>
                     <div>
-                        {username} | {createDate}
+                        {username}| {createDate}
                     </div>
                 </div>
             </div>
