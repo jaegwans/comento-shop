@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import styleSet from '../style/styleSet';
 import { useParams } from 'react-router-dom';
 import { getProductDetail, mockReviews } from '../data/mockData';
@@ -14,6 +14,7 @@ const ProductDetail = () => {
     };
 
     const { productId } = useParams();
+    //? product를 useState로 구현 시 제대로 안받아오는 이슈 발생함
     const product = getProductDetail(productId);
     console.log(product.description);
 
@@ -58,21 +59,23 @@ const ProductDetail = () => {
                 </button>
             </StyledToggle>
 
-            <StyledBar />
-            {clicked ? (
-                <StyldMainImage src={product.mainImage} />
-            ) : (
-                mockReviews.map((r) => (
-                    <Review
-                        key={r.id}
-                        username={r.username}
-                        score={r.score}
-                        createDate={r.createdDate}
-                        profileImage={r.profileImage}
-                        reviewText={r.reviewText}
-                    />
-                ))
-            )}
+            <StyledBar style={{ marginBottom: '9px' }} />
+            <div>
+                {clicked ? (
+                    <StyldMainImage src={product.mainImage} />
+                ) : (
+                    mockReviews.map((r) => (
+                        <Review
+                            key={r.id}
+                            username={r.username}
+                            score={r.score}
+                            createDate={r.createdDate}
+                            profileImage={r.profileImage}
+                            reviewText={r.reviewText}
+                        />
+                    ))
+                )}
+            </div>
         </StyledDetail>
     );
 };
@@ -82,7 +85,7 @@ export default ProductDetail;
 const StyldMainImage = styled.img`
     width: 342px;
     object-fit: contain;
-    margin: 25px 24px;
+    margin: 16px 24px;
 `;
 
 const StyledToggle = styled.div`
@@ -142,6 +145,7 @@ const StyledDetail = styled.div`
         height: 420px;
         object-fit: cover;
     }
+    padding-bottom: 200px;
 `;
 const StyledTitleBox = styled.div`
     width: ${styleSet.width}px;
