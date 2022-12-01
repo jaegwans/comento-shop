@@ -1,9 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
-function ProductCard({ imgSrc, title, summary }) {
+function ProductCard({ imgSrc, title, summary, id }) {
+    const navigate = useNavigate();
     return (
-        <StyledProductCard>
+        <StyledProductCard
+            onClick={() => {
+                navigate(`product/${id}`);
+                console.log(id);
+            }}
+        >
             <img src={imgSrc} alt="title" />
             <h3>{title}</h3>
             <p>{summary}</p>
@@ -11,7 +18,8 @@ function ProductCard({ imgSrc, title, summary }) {
     );
 }
 
-const StyledProductCard = styled.div`
+const StyledProductCard = styled.button`
+    all: unset;
     width: 342px;
     height: 296px;
     margin-top: 40px;

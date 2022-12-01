@@ -1,39 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ThemeButton from '../components/ThemeButton';
 import styleSet from '../style/styleSet';
 import ProductCard from '../components/ProductCard';
+
 import {
     mockTheme1Produdcts as products1,
     mockTheme2Produdcts as products2,
 } from '../data/mockData';
 
 const Home = () => {
-    const [products, setProducts] = useState('product1'); //string
+    const [products, setProducts] = useState(); //number
+
     const _themeButtonClickListener = (e) => {
-        setProducts(e.target.id);
+        console.log(e.target.id);
+        setProducts(Number(e.target.id));
     };
+
+    useEffect(() => {
+        setTimeout(() => {
+            setProducts(1);
+        }, 1000);
+    }, []);
     return (
         <StyledHome>
             <StyledTitleBox>코멘토 쇼핑</StyledTitleBox>
             <StyledBar />
             <ButtonBox>
                 <ThemeButton
-                    id={0}
+                    id={1}
                     title="# 겨울 방한템"
                     onClick={_themeButtonClickListener}
                 />
                 <ThemeButton
-                    id={1}
+                    id={2}
                     title="# 따순머그컵"
                     onClick={_themeButtonClickListener}
                 />
             </ButtonBox>
             <StyledBar2 />
-            {products == 1
+            {products === 1
                 ? products1.map((product) => (
                       <ProductCard
                           key={product.id}
+                          id={product.id}
                           title={product.name}
                           imgSrc={product.thumbnail}
                           summary={product.description}
@@ -42,6 +52,7 @@ const Home = () => {
                 : products2.map((product) => (
                       <ProductCard
                           key={product.id}
+                          id={product.id}
                           title={product.name}
                           imgSrc={product.thumbnail}
                           summary={product.description}

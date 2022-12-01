@@ -72,6 +72,7 @@ export const mockTheme2Produdcts = [
 
 // 이 부분은 Copy 해서 쓰시면 됩니다!
 export const getProductDetail = (productId) => {
+    console.log('1번');
     return [...mockTheme1Produdcts, ...mockTheme2Produdcts].find((product) => {
         return product.id === Number(productId);
     });
