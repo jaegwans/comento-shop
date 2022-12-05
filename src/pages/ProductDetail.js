@@ -4,13 +4,19 @@ import styleSet from '../style/styleSet';
 import { useParams } from 'react-router-dom';
 import { getProductDetail, mockReviews } from '../data/mockData';
 import { useNavigate } from 'react-router-dom';
-import { click } from '@testing-library/user-event/dist/click';
+import * as webStorage from '../utils/webStorage';
+
 import Review from '../components/Review';
 
 const ProductDetail = () => {
     const navigate = useNavigate();
     const _onClickBackBtn = () => {
         navigate(-1);
+    };
+
+    const _onClickAddBasketButton = (product) => {
+        webStorage.addBasket(product);
+        navigate('/basket');
     };
 
     const { productId } = useParams();
@@ -76,11 +82,31 @@ const ProductDetail = () => {
                     ))
                 )}
             </div>
+            <StyledAddBasket onClick={() => _onClickAddBasketButton(product)}>
+                장바구니 담기
+            </StyledAddBasket>
         </StyledDetail>
     );
 };
 
 export default ProductDetail;
+
+const StyledAddBasket = styled.button`
+    position: fixed;
+    left: auto;
+    right: auto;
+    bottom: 0%;
+    background: #24dbaf;
+    width: 390px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 21px;
+`;
 
 const StyldMainImage = styled.img`
     width: 342px;

@@ -10,6 +10,9 @@ body{
     display: flex;
     justify-content: center;
 }
+button{
+    all:unset;
+}
 `;
 
 export default GlobalStyle;
