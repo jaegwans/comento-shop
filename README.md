@@ -1,6 +1,6 @@
-# comento-shop
+# comento-shop Front-end
 
-코멘토 직무캠프 과제 수행
+코멘토 직무캠프 과제 수행 - Front-End
 
 https://jaegwans.github.io/comento-shop/
 
